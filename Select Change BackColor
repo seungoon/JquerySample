@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>selected demo</title>
+  
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+	  .select_1 {
+	    background-color: red;
+	  }
+	  
+	  .select_2 {
+	    background-color: black;
+	  }
+	  
+	  .select_3 {
+	    background-color: yellow;
+	  }
+	  
+	  .select_4 {
+	    background-color: green;
+	  }
+	  
+	  .select_5 {
+	    background-color: gray;
+	  }
+	  
+	  .select_6 {
+	    background-color: orange;
+	  }
+
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<select id="selectStatus2" name="garden">
+  <option value="1">Flowers</option>
+  <option value="2">Shrubs</option>
+  <option value="3">Trees</option>
+  <option value="4" selected="selected">Bushes</option>
+  <option value="5">Grass</option>
+  <option value="6">Dirt</option>
+</select>
+<br />
+<br />
+<select id="selectStatus1" class="form-control" name="garden">
+  <option value="1">Flowers</option>
+  <option value="2">Shrubs</option>
+  <option value="3">Trees</option>
+  <option value="4" selected="selected">Bushes</option>
+  <option value="5">Grass</option>
+  <option value="6">Dirt</option>
+</select>
+
+ 
+<script>
+$(document).ready(function(){
+    setColorBefore();
+    $('select').change(function(){
+        setColorAfter(this);       
+    });
+ });
+
+function setColorBefore()
+{
+   switch($('select').find('option:selected').val()) {
+      case "1" :  $('select').css("background-color","black"); break;
+      case "2" :  $('select').css("background-color","yellow"); break;
+      case "3" :  $('select').css("background-color","red"); break;
+      case "4" :  $('select').css("background-color","green"); break;
+      case "5" :  $('select').css("background-color","gray"); break;
+      case "6" :  $('select').css("background-color","blue"); break;
+    };
+}
+
+function setColorAfter(obj)
+{
+	var jo = "#" + obj.id;
+	
+   switch($(jo).find('option:selected').val()) {
+      case "1" :  $(jo).css("background-color","black"); break;
+      case "2" :  $(jo).css("background-color","yellow"); break;
+      case "3" :  $(jo).css("background-color","red"); break;
+      case "4" :  $(jo).css("background-color","green"); break;
+      case "5" :  $(jo).css("background-color","gray"); break;
+      case "6" :  $(jo).css("background-color","blue"); break;
+    };
+}
+
+</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+ 
+</body>
+</html>
