@@ -1,0 +1,8 @@
+paddingTop number チャートの上パディング for all chartTypes 100 自動計算 
+paddingBottom number チャートの下パディング for all chartTypes 100 自動計算 
+paddingLeft number チャートの左パディング for all chartTypes 100 自動計算
+paddingRight number チャートの右パディング for all chartTypes 100 自動計算
+
+
+※例として、右部分を隠す。
+→"paddingRight": "0",
