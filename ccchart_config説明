@@ -1,0 +1,21 @@
+ccchart.base('', {config : {
+    "type" : "line", //チャート種類
+    "useVal" : "yes", //値を表示
+    "xScaleFont" : "100 16px 'meiryo'", //水平軸目盛フォント
+    "yScaleFont" : "100 16px 'meiryo'", //垂直軸目盛フォント
+    "hanreiFont" : "bold 16px 'meiryo'", //凡例フォント
+    "valFont" : "bold 16px 'meiryo'", //値フォント
+    "paddingTop" : "25", //上パディング
+    "paddingRight" : "140", //右パディング
+    "colorSet" : ["blue"], //データ列の色
+    "useShadow" : "no", //影
+    "height" : "300", //チャート高さ
+    "width" : "900", //チャート幅
+    "useMarker" : "arc", //マーカー種類
+    "markerWidth" : "7", //マーカー大きさ
+    "valYOffset" : "8", //値オフセット
+    "valXOffset" : "-8", //値オフセット
+    "bg" : "#fff", //背景色
+    "textColor" : "#333", //テキスト色
+    "lineWidth" : "1", //ラインの太さ
+  }});
