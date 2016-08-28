@@ -1,0 +1,12 @@
+
+１．Jqueryに下記のFunctionを定義する。
+<script type="text/javascript">
+		$(function(){
+			$( "img" ).error(function() {
+			    $( this ).attr( "src", "../static/image/error_default.png" );
+			  }).attr( "src", "missing.png" );
+		});
+	</script>
+
+※参考イメージ：
+https://www.google.co.jp/search?q=missing.png&tbm=isch&tbo=u&source=univ&sa=X&ved=0ahUKEwip8t77r-TOAhWKKJQKHbCXAVMQ7AkILw&biw=1920&bih=971&dpr=1#imgrc=OY95JJWzzeQZ_M%3A
