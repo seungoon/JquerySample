@@ -1,0 +1,70 @@
+
+１．ＨＴＭＬでＡｊａｘ結果を表示する部分を定義する。
+<div id="ajax_data">
+    <input type="button" id="ajaxButton" value="Ajax通信テスト" /><br />
+   	ＪＳＯＮ出力結果：<div><table id="outTable" border="1"></table></div>
+</div>
+
+２．ＪＳでＡｊａｘ関数を定義する。
+
+//Ajax通信失敗時処理
+function error(XMLHttpRequest, textStatus, errorThrown) {
+    alert("error:" + XMLHttpRequest);
+    alert("status:" + textStatus);
+    alert("errorThrown:" + errorThrown);
+}
+
+$(function() {
+		var data = {"name": "hoge",};
+		
+	    // Ajax通信テスト ボタンクリック
+	    $('#ajaxButton').click(function() {
+	        // outputDataを空に初期化
+	        $("#outTable").text("");
+	        
+	        $.ajax({
+	            type        : "POST",
+	            url         : "/getData",
+	            contentType : "application/json",
+	            data        : JSON.stringify(data),
+	            dataType    : "json",
+	            timeout     : 10000,
+	            success     : function(data) {
+	                            success(data);
+	                        },
+	            error       : function(XMLHttpRequest, textStatus, errorThrown) {
+	                            error(XMLHttpRequest, textStatus, errorThrown);
+	                        }
+	        });
+	    });
+	});
+	
+	// Ajax通信成功時処理
+	function success(data) {
+		
+	    var html = [];
+        /* loop through array */
+        $.each(data, function(index, d){     
+        	html.push("<tr>");
+            html.push("<td>","NO : ", index + 1, "</td>",
+            		  "<td>","Manufacturer : ", d.id, "</td>",
+            	 	  "<td>","Sold : ", d.value, "</td>",
+            	 	 "<td>","Month : ", d.name, "</td>");
+            html.push("</tr>");
+        });
+
+        $("#outTable").html(html.join(''));
+	}
+	
+	３．サーバ側でgetDataメソッドを定義する。
+	
+	@RequestMapping(value = "/getData", consumes=MediaType.APPLICATION_JSON_VALUE)
+  @ResponseBody
+  List<TestData> testData(Model model){
+
+      // DBからデータ取得
+      List<TestData> list = repository.findAll();
+
+      return list;
+  }
+	
