@@ -1,0 +1,26 @@
+// 画面からcheckbox項目のchangeEvent処理を行う
+  $('input[type="checkbox"]').on('click', function() {
+      if ($(this)[0].checked) {
+          $(this).attr('checked', 'checked')
+      } else {
+          $(this).removeAttr("checked");
+      }
+  });
+
+  // 画面からradio項目のchangeEvent処理を行う
+  $('input[type="radio"]').on('click', function() {
+      var nameValue = $(this).attr('name');
+      $('input[name="' + nameValue + '"]').removeAttr("checked");
+      $(this).prop('checked', true).attr('checked', 'checked');
+   });
+
+  // 画面からtext項目のchangeEvent処理を行う
+  $('input[type="text"]').on('blur', function() {
+      $(this).attr('value', $(this).val());
+  });
+
+  // 画面からtext項目のchangeEvent処理を行う
+  $('textarea').on('blur', function() {
+      $(this).attr('value', $(this).val());
+      $(this).html($(this).val());
+  });
