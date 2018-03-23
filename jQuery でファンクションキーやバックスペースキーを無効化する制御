@@ -1,0 +1,146 @@
+※参考サイト：　https://nj-clucker.com/jquery-ctrl-key-input-event/
+
+■jQuery でファンクションキーを制御
+$(function(){
+  //------------------------
+  // jQueryキー制御サンプル
+  // return値falseによりキーキャンセル
+  //------------------------
+  $(document).keydown(function(event){
+    // クリックされたキーのコード
+    var keyCode = event.keyCode;
+ 
+    // ファンクションキーを制御する
+    // 制限を掛けたくない場合は対象から外す
+    if(keyCode == 112 // F1キーの制御
+    	|| keyCode == 113 // F2キーの制御
+    	|| keyCode == 114 // F3キーの制御
+    	|| keyCode == 115 // F4キーの制御
+    	|| keyCode == 116 // F5キーの制御
+    	|| keyCode == 117 // F6キーの制御
+    	|| keyCode == 122 // F11キーの制御
+    	|| keyCode == 123 // F12キーの制御
+      )
+    {
+      return false;
+    }
+  });
+});
+
+■Ctrl + N を制御する
+jQuery で Ctrl + N を制御
+$(function(){
+  //------------------------
+  // jQueryキー制御サンプル
+  // return値falseによりキーキャンセル
+  //------------------------
+  $(document).keydown(function(event){
+    // クリックされたキーのコード
+    var keyCode = event.keyCode;
+    // Ctrlキーがクリックされたか (true or false)
+    var ctrlClick = event.ctrlKey;
+ 
+    // Ctrl + Nを制御する
+    if(ctrlClick && keyCode == 78){
+      return false;
+    }
+  });
+});
+
+■バックスペースキーを制御する
+バックスペースキーを制御
+$(function(){
+  //------------------------
+  // jQueryキー制御サンプル
+  // return値falseによりキーキャンセル
+  //------------------------
+  $(document).keydown(function(event){
+    // クリックされたキーのコード
+    var keyCode = event.keyCode;
+    // Ctrlキーがクリックされたか (true or false)
+    var ctrlClick = event.ctrlKey;
+    // Altキーがクリックされたか (true or false)
+    var altClick = event.altKey;
+    // キーイベントが発生した対象のオブジェクト
+    var obj = event.target;
+ 
+    // バックスペースキーを制御する
+    if(keyCode == 8){
+      // テキストボックス／テキストエリアを制御する
+      if((obj.tagName == "INPUT" && obj.type == "TEXT")
+      	  || obj.tagName == "TEXTAREA"){
+        // 入力できる場合は制御しない
+        if(!obj.readOnly && !obj.disabled){
+          return true;
+        }
+      }
+      return false;
+    }
+ 
+    // Alt + ←→を制御する
+    if(altClick && (keyCode == 37 || keyCode == 39){
+      return false;
+    }
+  });
+});
+
+
+■上記の情報を全部まとめ
+
+各キー制御
+$(function(){
+  //------------------------
+  // jQueryキー制御サンプル
+  // return値falseによりキーキャンセル
+  //------------------------
+  $(document).keydown(function(event){
+    // クリックされたキーのコード
+    var keyCode = event.keyCode;
+    // Ctrlキーがクリックされたか (true or false)
+    var ctrlClick = event.ctrlKey;
+    // Altキーがクリックされたか (true or false)
+    var altClick = event.altKey;
+    // キーイベントが発生した対象のオブジェクト
+    var obj = event.target;
+ 
+    // ファンクションキーを制御する
+    // 制限を掛けたくない場合は対象から外す
+    if(keyCode == 112 // F1キーの制御
+    	|| keyCode == 113 // F2キーの制御
+    	|| keyCode == 114 // F3キーの制御
+    	|| keyCode == 115 // F4キーの制御
+    	|| keyCode == 116 // F5キーの制御
+    	|| keyCode == 117 // F6キーの制御
+    	|| keyCode == 122 // F11キーの制御
+    	|| keyCode == 123 // F12キーの制御
+      )
+    {
+      return false;
+    }
+ 
+    // バックスペースキーを制御する
+    if(keyCode == 8){
+      // テキストボックス／テキストエリアを制御する
+      if((obj.tagName == "INPUT" && obj.type == "TEXT")
+      	  || obj.tagName == "TEXTAREA"){
+        // 入力できる場合は制御しない
+        if(!obj.readOnly && !obj.disabled){
+          return true;
+        }
+      }
+      return false;
+    }
+ 
+    // Alt + ←を制御する
+    if(altClick && (keyCode == 37 || keyCode == 39){
+      return false;
+    }
+ 
+    // Ctrl + Nを制御する
+    if(ctrlClick && keyCode == 78){
+      return false;
+    }
+  });
+});
+
+
