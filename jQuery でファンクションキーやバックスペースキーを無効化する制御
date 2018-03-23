@@ -144,3 +144,11 @@ $(function(){
 });
 
 
+※参考
+
+Javascript
+window.document.onkeydown = function keydown(){
+    if( window.event.keyCode == 8 ){
+        return false;
+    }
+}
