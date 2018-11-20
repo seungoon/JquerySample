@@ -1,0 +1,6 @@
+１．親WindowのFunctionを呼び出す方法。
+　→XXXは親WindowのFunction名。
+
+　window.opener.XXX(引数１、引数２);
+　window.opener.focus();
+　window.close();
