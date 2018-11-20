@@ -15,7 +15,20 @@ function error(XMLHttpRequest, textStatus, errorThrown) {
 }
 
 $(function() {
-		var data = {"name": "hoge",};
+	    var param = {};
+	    var data = {};
+	    
+	    // パラメータの設定(kye1,kye2,kye3はプロパティ名と見なす)
+	    data.kye1 = "値１";
+	    data.kye2 = "値２";
+	    data.kye3 = "値３";
+	    param.data = data;
+	    
+	    // List型のデータの場合
+	    var dataList = [];
+	    for (var i = 0; i < datasSize; i++) {
+	        dataList.push({"kye1": "値１", "kye2": "値２");
+	    }
 		
 	    // Ajax通信テスト ボタンクリック
 	    $('#ajaxButton').click(function() {
@@ -26,7 +39,7 @@ $(function() {
 	            type        : "POST",
 	            url         : "/getData",
 	            contentType : "application/json",
-	            data        : JSON.stringify(data),
+	            data        : JSON.stringify(param),	// 例：JSON.stringify(dataList)
 	            dataType    : "json",
 	            timeout     : 10000,
 	            success     : function(data) {
@@ -42,7 +55,7 @@ $(function() {
 	// Ajax通信成功時処理
 	function success(data) {
 		
-	    var html = [];
+	var html = [];
         /* loop through array */
         $.each(data, function(index, d){     
         	html.push("<tr>");
@@ -56,9 +69,9 @@ $(function() {
         $("#outTable").html(html.join(''));
 	}
 	
-	３．サーバ側でgetDataメソッドを定義する。
+３．サーバ側でgetDataメソッドを定義する。
 	
-	@RequestMapping(value = "/getData", consumes=MediaType.APPLICATION_JSON_VALUE)
+　@RequestMapping(value = "/getData", consumes=MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
   List<TestData> testData(Model model){
 
