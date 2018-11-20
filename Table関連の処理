@@ -1,0 +1,62 @@
+１．Tableの明細件数をカウントする方法。
+$("table#myTable tr").length -1;
+or
+var allCounts = $("table#myTable input[type='checkbox']").length;				// 任意項目のTypeを指定して検索
+
+２．Tableのcheckbox項目の中で、チェックされた項目の件数をカウントする方法。
+var checkCounts = $("table#myTable input[type='checkbox']:checked").length;	// チェック数
+
+３．Tableのcheckbox項目の中で、チェックされていない項目の件数をカウントする方法。
+var checkCounts = $("table#myTable input[type='checkbox']:not(:checked)").length;	// チェック数
+
+４．TableのTrでほかの項目の値を検索する方法。
+var hokaItem = $("table#myTable input[type='radio']").filter(
+		        		function() { 
+		        			// radio項目の値＝１、且つ同じ行のCheckBox項目がチェックされた場合
+                  return $(this).val()=='1' && $(this).closest('tr').find("input[type='checkbox']:checked").length > 0;
+		        		});
+                
+５．TableのHidden項目の値を取得する方法。
+$("対象データ集合").each(function(index , elm) {
+		$(elm).closest('tr').find("input:hidden[name='parentKykMeisaiSummaryId']").val();
+});
+
+６．TableのTrを１行ずつLoopする方法。
+$("table#myTable tr").each(function(index , elm) {
+  // 明細行の場合のみ
+  if (index > 0) {
+    // 行の全部TDを取得する
+    var tds = $(elm).find('td');
+    // No項目(１列目)の番号を再設定する
+    var cell1 = tds.eq(0);
+    cell1.text(index);
+        		
+    // 背景色を再設定する
+    $(elm).find('td').removeClass();
+    $(elm).find('td').addClass(getRowCss(index));
+  }
+  
+  // チェックされた項目の場合
+  if ($(elm).find("input:checkbox").is(":checked")) {
+    
+  }
+  // チェックされていない項目の場合
+  if ($(elm).find("input:checkbox").is(":not(:checked)")) {
+    
+  }
+  // 行を削除する
+  $(this).remove();
+                  
+  // each処理を中止
+	return false;
+});
+
+function getRowCss(no){
+		if (no % 2 == 0) {
+       return "スタイル１";
+    } else {
+       return "スタイル２";
+    }
+}
+
+４．TableのTrでほかの項目の値を検索する方法。
