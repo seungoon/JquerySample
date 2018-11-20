@@ -4,3 +4,10 @@
 　window.opener.XXX(引数１、引数２);
 　window.opener.focus();
 　window.close();
+
+２．親ウインドウのステータス確認。
+
+  <%-- 親ウインドウがないときは何もしない。--%>
+  if (!window.opener || window.opener.closed) {
+    return false;
+  }
