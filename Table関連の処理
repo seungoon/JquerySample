@@ -1,7 +1,7 @@
 １．Tableの明細件数をカウントする方法。
 $("table#myTable tr").length -1;
 or
-var allCounts = $("table#myTable input[type='checkbox']").length;				// 任意項目のTypeを指定して検索
+var allCounts = $("table#myTable input[type='checkbox']").length;  // 任意項目のTypeを指定して検索
 
 ２．Tableのcheckbox項目の中で、チェックされた項目の件数をカウントする方法。
 var checkCounts = $("table#myTable input[type='checkbox']:checked").length;	// チェック数
@@ -11,14 +11,14 @@ var checkCounts = $("table#myTable input[type='checkbox']:not(:checked)").length
 
 ４．TableのTrでほかの項目の値を検索する方法。
 var hokaItem = $("table#myTable input[type='radio']").filter(
-		        		function() { 
-		        			// radio項目の値＝１、且つ同じ行のCheckBox項目がチェックされた場合
-                  return $(this).val()=='1' && $(this).closest('tr').find("input[type='checkbox']:checked").length > 0;
-		        		});
+    function() { 
+	// radio項目の値＝１、且つ同じ行のCheckBox項目がチェックされた場合
+        return $(this).val()=='1' && $(this).closest('tr').find("input[type='checkbox']:checked").length > 0;
+});
                 
 ５．TableのHidden項目の値を取得する方法。
 $("対象データ集合").each(function(index , elm) {
-		$(elm).closest('tr').find("input:hidden[name='parentKykMeisaiSummaryId']").val();
+    $(elm).closest('tr').find("input:hidden[name='parentKykMeisaiSummaryId']").val();
 });
 
 ６．TableのTrを１行ずつLoopする方法。
@@ -48,15 +48,42 @@ $("table#myTable tr").each(function(index , elm) {
   $(this).remove();
                   
   // each処理を中止
-	return false;
+  return false;
 });
 
 function getRowCss(no){
-		if (no % 2 == 0) {
+    if (no % 2 == 0) {
        return "スタイル１";
     } else {
        return "スタイル２";
     }
 }
 
-４．TableのTrでほかの項目の値を検索する方法。
+４．行追加処理。
+　// 項目の生成
+ var cell1Hidden = $("<INPUT>").attr({
+     name: "no",
+     type: "hidden",
+     value:""
+ });
+ 
+ // TDに登録する
+ var addCell1 = $("<TD>")
+   .text("値")
+   .append(cell1Hidden)
+   .attr({class: "class名",align: "right"});
+ 
+ var addCell2 =  $("<TD>").append($("<INPUT>")
+   .attr({name: "mesaiFlgs",type: "radio",value: "0"}))
+   .attr({class: "class名",align: "center",disabled: true});
+ 
+// TRの生成
+var addRow = $("<TR>");
+
+// TRに登録する
+addRow.append(addCell1)
+      .append(addCell2);
+
+// TABLEに登録する
+$("table#myTable").append(addRow);
+
