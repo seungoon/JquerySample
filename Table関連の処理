@@ -59,7 +59,7 @@ function getRowCss(no){
     }
 }
 
-４．行追加処理。
+７．行追加処理。
 　// 項目の生成
  var cell1Hidden = $("<INPUT>").attr({
      name: "no",
