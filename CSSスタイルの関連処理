@@ -1,0 +1,7 @@
+１．初期表示でCSSスタイルの適用
+　// 初期処理
+	$(function (){
+		// 画面のレイアウト幅を再設定する
+		$("対象Object").css("min-width", 'auto')
+                   .css("min-height", 'auto');
+	});
