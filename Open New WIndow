@@ -1,0 +1,13 @@
+
+var windowOpenObj = null;
+
+function GtTmSogoDetail(code1,code2) {
+  if(windowOpenObj == null || windowOpenObj.closed)
+  {
+    windowOpenObj = window.open("www.yahoo.co.jp","PromoteFirefoxWindowName", "resizable,scrollbars,status");
+    alert("新規作成！");
+  } else {
+    windowOpenObj.focus();
+    alert("存在する！");
+  };
+}
